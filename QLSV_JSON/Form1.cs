@@ -14,7 +14,7 @@ namespace QLSV_JSON
     public partial class Form1 : Form
     {
         DataSet dsSinhVien = new DataSet();
-        int vt,id = 0;
+        int vt, id = 0;
         public Form1()
         {
             InitializeComponent();
@@ -46,7 +46,14 @@ namespace QLSV_JSON
             dt.Columns.Add("Tentinh");
             return dt;
         }
-
+        //auto size columns datagirdview
+        private void autoSize(DataGridView dtgv)
+        {
+            foreach (DataGridViewColumn i in dtgv.Columns)
+            {
+                i.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             if (System.IO.File.Exists("dulieu.json"))
@@ -55,10 +62,14 @@ namespace QLSV_JSON
                 System.IO.StreamReader reader = new System.IO.StreamReader("dulieu.json");
                 jsonstr = reader.ReadToEnd();
                 reader.Close();
-                dsSinhVien = JsonConvert.DeserializeObject<DataSet>(jsonstr);
+                dsSinhVien = JsonConvert.DeserializeObject<DataSet>(jsonstr); 
                 datagv1.DataSource = dsSinhVien.Tables["SinhVien"];
+                autoSize(datagv1);
                 datagv2.DataSource = dsSinhVien.Tables["SinhVien"];
+                autoSize(datagv2);
                 datagv3.DataSource = dsSinhVien.Tables["Diem"];
+                autoSize(datagv3);
+                
             }
             else
             {
@@ -70,6 +81,7 @@ namespace QLSV_JSON
                 dsSinhVien.Tables.Add(dtDiem);
                 dsSinhVien.Tables.Add(dtTinh);
             }
+            // an panel cap nhat
             panel4.Enabled = false;
         }
         private void refresh()
@@ -91,27 +103,37 @@ namespace QLSV_JSON
             }
             else
             {
-                dsSinhVien.Tables["SinhVien"].Rows.Add(tbhoten.Text, tbmasv.Text, dtngaysinh.Text, tbquequan.Text, gt);
+                dsSinhVien.Tables["SinhVien"].Rows.Add(tbhoten.Text, tbmasv.Text, dtngaysinh.Value.ToShortDateString(), tbquequan.Text, gt);
                 dsSinhVien.Tables["Diem"].Rows.Add(tbhoten.Text, 0, 0, 0, 0);
                 dsSinhVien.Tables["Tinh"].Rows.Add(id, tbquequan.Text);
                 datagv1.DataSource = dsSinhVien.Tables["SinhVien"];
+                autoSize(datagv1);
                 datagv2.DataSource = dsSinhVien.Tables["SinhVien"];
+                autoSize(datagv2);
                 datagv3.DataSource = dsSinhVien.Tables["Diem"];
+                autoSize(datagv3);
                 refresh();
             }
         }
         //sua sv
         private void btsua_Click(object sender, EventArgs e)
         {
-            datagv2.CurrentRow.Cells[0].Value = tbhoten.Text;
+            //dung cach nay ko thong ke ngay dc
+            /*datagv2.CurrentRow.Cells[0].Value = tbhoten.Text;
             datagv2.CurrentRow.Cells[1].Value = tbmasv.Text;
             datagv2.CurrentRow.Cells[2].Value = dtngaysinh.Text;
-            datagv2.CurrentRow.Cells[3].Value = tbquequan.Text;
+            datagv2.CurrentRow.Cells[3].Value = tbquequan.Text;*/
+            int rowIndex = datagv2.CurrentRow.Index;
+            dsSinhVien.Tables["SinhVien"].Rows[rowIndex].SetField(0, tbhoten.Text);
+            dsSinhVien.Tables["SinhVien"].Rows[rowIndex].SetField(1, tbmasv.Text);
+            dsSinhVien.Tables["SinhVien"].Rows[rowIndex].SetField(2, dtngaysinh.Value.ToShortDateString());
+            dsSinhVien.Tables["SinhVien"].Rows[rowIndex].SetField(3, tbquequan.Text);
+            dsSinhVien.Tables["Tinh"].Rows[rowIndex].SetField(1, tbquequan.Text);
             if (rbnam.Checked)
             {
-                datagv2.CurrentRow.Cells[4].Value = rbnam.Text;
+                dsSinhVien.Tables["SinhVien"].Rows[rowIndex].SetField(4, rbnam.Text);
             }
-            else datagv2.CurrentRow.Cells[4].Value = rbnu.Text;
+            else dsSinhVien.Tables["SinhVien"].Rows[rowIndex].SetField(4,rbnu.Text);
         }
         private void datagv2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -140,7 +162,6 @@ namespace QLSV_JSON
         //luu thong tin sv
         private void btluu_Click(object sender, EventArgs e)
         {
-            //dsSinhVien.Tables.Clear();
             string jsonstr = JsonConvert.SerializeObject(dsSinhVien);
             System.IO.File.WriteAllText("dulieu.json", jsonstr);
         }
@@ -166,10 +187,18 @@ namespace QLSV_JSON
                 tbanh.Focus();
             }
             tb = (toan + van + anh) / 3;
-            datagv3.CurrentRow.Cells[1].Value = toan;
+            // dung cach nay ko thong ke ngay duoc
+            /*datagv3.CurrentRow.Cells[1].Value = toan;
             datagv3.CurrentRow.Cells[2].Value = van;
             datagv3.CurrentRow.Cells[3].Value = anh;
-            datagv3.CurrentRow.Cells[4].Value = tb;
+            datagv3.CurrentRow.Cells[4].Value = tb;*/
+
+            int rowIndex = datagv3.CurrentRow.Index;
+            dsSinhVien.Tables["Diem"].Rows[rowIndex].SetField(0, datagv3.CurrentRow.Cells[0].Value.ToString());
+            dsSinhVien.Tables["Diem"].Rows[rowIndex].SetField(1, toan);
+            dsSinhVien.Tables["Diem"].Rows[rowIndex].SetField(2, van);
+            dsSinhVien.Tables["Diem"].Rows[rowIndex].SetField(3, anh);
+            dsSinhVien.Tables["Diem"].Rows[rowIndex].SetField(4, tb);
         }
 
         private void datagv3_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -256,6 +285,7 @@ namespace QLSV_JSON
                 }
             }
             datagv4.DataSource = dttk;
+            autoSize(datagv4);
         }
     }
 }
