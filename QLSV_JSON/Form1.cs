@@ -89,29 +89,35 @@ namespace QLSV_JSON
             tbhoten.Clear();
             tbmasv.Clear();
             dtngaysinh.Text = "1/1/2000";
-            tbquequan.Text = null;
+            tbquequan.Clear();
         }
         //them Sv
         private void btthem_Click(object sender, EventArgs e)
         {
-            string gt = "Nam";
-            if (rbnu.Checked) gt = "Nu";
-            id++;
+            
             if (tbhoten.Text == "" || tbmasv.Text == "" || tbquequan.Text == "")
             {
                 MessageBox.Show("Ban nhap thieu thong tin!");
             }
             else
             {
+                id++;
+                string gt = "Nam";
+                if (rbnu.Checked) gt = "Nu";
                 dsSinhVien.Tables["SinhVien"].Rows.Add(tbhoten.Text, tbmasv.Text, dtngaysinh.Value.ToShortDateString(), tbquequan.Text, gt);
                 dsSinhVien.Tables["Diem"].Rows.Add(tbhoten.Text, 0, 0, 0, 0);
                 dsSinhVien.Tables["Tinh"].Rows.Add(id, tbquequan.Text);
                 datagv1.DataSource = dsSinhVien.Tables["SinhVien"];
-                autoSize(datagv1);
+                
                 datagv2.DataSource = dsSinhVien.Tables["SinhVien"];
-                autoSize(datagv2);
+ 
                 datagv3.DataSource = dsSinhVien.Tables["Diem"];
-                autoSize(datagv3);
+                if(id == 1)
+                {
+                    autoSize(datagv1);
+                    autoSize(datagv2);
+                    autoSize(datagv3);
+                }
                 refresh();
             }
         }
@@ -152,7 +158,7 @@ namespace QLSV_JSON
         //Xoa SV
         private void btxoa_Click(object sender, EventArgs e)
         {
-            datagv2.Rows.RemoveAt(vt);
+            dsSinhVien.Tables["SinhVien"].Rows.RemoveAt(vt);
         }
         private void datagv2_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -212,7 +218,7 @@ namespace QLSV_JSON
         //xoa diem
         private void btxoa2_Click(object sender, EventArgs e)
         {
-            datagv3.Rows.RemoveAt(vt);
+            dsSinhVien.Tables["Diem"].Rows.RemoveAt(vt);
         }       
         private void datagv3_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
