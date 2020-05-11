@@ -60,7 +60,6 @@
             this.tbvan = new System.Windows.Forms.TextBox();
             this.tbtoan = new System.Windows.Forms.TextBox();
             this.btluu2 = new System.Windows.Forms.Button();
-            this.btxoa2 = new System.Windows.Forms.Button();
             this.btcapnhat = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -375,7 +374,6 @@
             this.panel4.Controls.Add(this.tbvan);
             this.panel4.Controls.Add(this.tbtoan);
             this.panel4.Controls.Add(this.btluu2);
-            this.panel4.Controls.Add(this.btxoa2);
             this.panel4.Controls.Add(this.btcapnhat);
             this.panel4.Controls.Add(this.label9);
             this.panel4.Controls.Add(this.label8);
@@ -417,19 +415,9 @@
             this.btluu2.UseVisualStyleBackColor = true;
             this.btluu2.Click += new System.EventHandler(this.btluu2_Click);
             // 
-            // btxoa2
-            // 
-            this.btxoa2.Location = new System.Drawing.Point(636, 129);
-            this.btxoa2.Name = "btxoa2";
-            this.btxoa2.Size = new System.Drawing.Size(75, 40);
-            this.btxoa2.TabIndex = 4;
-            this.btxoa2.Text = "Xóa";
-            this.btxoa2.UseVisualStyleBackColor = true;
-            this.btxoa2.Click += new System.EventHandler(this.btxoa2_Click);
-            // 
             // btcapnhat
             // 
-            this.btcapnhat.Location = new System.Drawing.Point(490, 129);
+            this.btcapnhat.Location = new System.Drawing.Point(569, 129);
             this.btcapnhat.Name = "btcapnhat";
             this.btcapnhat.Size = new System.Drawing.Size(106, 40);
             this.btcapnhat.TabIndex = 3;
@@ -668,7 +656,6 @@
         private System.Windows.Forms.TextBox tbvan;
         private System.Windows.Forms.TextBox tbtoan;
         private System.Windows.Forms.Button btluu2;
-        private System.Windows.Forms.Button btxoa2;
         private System.Windows.Forms.Button btcapnhat;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;

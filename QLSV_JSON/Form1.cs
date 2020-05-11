@@ -39,13 +39,6 @@ namespace QLSV_JSON
             dt.Columns.Add("TB", typeof(double));
             return dt;
         }
-        public DataTable taobang3()
-        {
-            DataTable dt = new DataTable("Tinh");
-            dt.Columns.Add("ID", typeof(int));
-            dt.Columns.Add("Tentinh");
-            return dt;
-        }
         //auto size columns datagirdview
         private void autoSize(DataGridView dtgv)
         {
@@ -75,11 +68,9 @@ namespace QLSV_JSON
             {
                 DataTable dtSV = taobang1();
                 DataTable dtDiem = taobang2();
-                DataTable dtTinh = taobang3();
 
                 dsSinhVien.Tables.Add(dtSV);
                 dsSinhVien.Tables.Add(dtDiem);
-                dsSinhVien.Tables.Add(dtTinh);
             }
             // an panel cap nhat
             panel4.Enabled = false;
@@ -106,11 +97,8 @@ namespace QLSV_JSON
                 if (rbnu.Checked) gt = "Nu";
                 dsSinhVien.Tables["SinhVien"].Rows.Add(tbhoten.Text, tbmasv.Text, dtngaysinh.Value.ToShortDateString(), tbquequan.Text, gt);
                 dsSinhVien.Tables["Diem"].Rows.Add(tbhoten.Text, 0, 0, 0, 0);
-                dsSinhVien.Tables["Tinh"].Rows.Add(id, tbquequan.Text);
-                datagv1.DataSource = dsSinhVien.Tables["SinhVien"];
-                
+                datagv1.DataSource = dsSinhVien.Tables["SinhVien"];               
                 datagv2.DataSource = dsSinhVien.Tables["SinhVien"];
- 
                 datagv3.DataSource = dsSinhVien.Tables["Diem"];
                 if(id == 1)
                 {
@@ -124,17 +112,13 @@ namespace QLSV_JSON
         //sua sv
         private void btsua_Click(object sender, EventArgs e)
         {
-            //dung cach nay ko thong ke ngay dc
-            /*datagv2.CurrentRow.Cells[0].Value = tbhoten.Text;
-            datagv2.CurrentRow.Cells[1].Value = tbmasv.Text;
-            datagv2.CurrentRow.Cells[2].Value = dtngaysinh.Text;
-            datagv2.CurrentRow.Cells[3].Value = tbquequan.Text;*/
-            int rowIndex = datagv2.CurrentRow.Index;
+            //lay vi tri row
+            int rowIndex = datagv2.CurrentRow.Index;           
             dsSinhVien.Tables["SinhVien"].Rows[rowIndex].SetField(0, tbhoten.Text);
+            dsSinhVien.Tables["Diem"].Rows[rowIndex].SetField(0, tbhoten.Text);
             dsSinhVien.Tables["SinhVien"].Rows[rowIndex].SetField(1, tbmasv.Text);
             dsSinhVien.Tables["SinhVien"].Rows[rowIndex].SetField(2, dtngaysinh.Value.ToShortDateString());
             dsSinhVien.Tables["SinhVien"].Rows[rowIndex].SetField(3, tbquequan.Text);
-            dsSinhVien.Tables["Tinh"].Rows[rowIndex].SetField(1, tbquequan.Text);
             if (rbnam.Checked)
             {
                 dsSinhVien.Tables["SinhVien"].Rows[rowIndex].SetField(4, rbnam.Text);
@@ -159,7 +143,9 @@ namespace QLSV_JSON
         private void btxoa_Click(object sender, EventArgs e)
         {
             dsSinhVien.Tables["SinhVien"].Rows.RemoveAt(vt);
+            dsSinhVien.Tables["Diem"].Rows.RemoveAt(vt);
         }
+        //lay vt tu datagv2
         private void datagv2_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left) vt = e.RowIndex;
@@ -193,11 +179,6 @@ namespace QLSV_JSON
                 tbanh.Focus();
             }
             tb = (toan + van + anh) / 3;
-            // dung cach nay ko thong ke ngay duoc
-            /*datagv3.CurrentRow.Cells[1].Value = toan;
-            datagv3.CurrentRow.Cells[2].Value = van;
-            datagv3.CurrentRow.Cells[3].Value = anh;
-            datagv3.CurrentRow.Cells[4].Value = tb;*/
 
             int rowIndex = datagv3.CurrentRow.Index;
             dsSinhVien.Tables["Diem"].Rows[rowIndex].SetField(0, datagv3.CurrentRow.Cells[0].Value.ToString());
@@ -215,11 +196,7 @@ namespace QLSV_JSON
             tbvan.Text = datagv3.Rows[rowIndex].Cells[2].Value.ToString();
             tbanh.Text = datagv3.Rows[rowIndex].Cells[3].Value.ToString();
         }
-        //xoa diem
-        private void btxoa2_Click(object sender, EventArgs e)
-        {
-            dsSinhVien.Tables["Diem"].Rows.RemoveAt(vt);
-        }       
+      
         private void datagv3_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left) vt = e.RowIndex;
@@ -256,8 +233,8 @@ namespace QLSV_JSON
             cbquequan.Visible = true;
             tim = "QQ";
             dttk = taobang1();
-            cbquequan.DataSource = dsSinhVien.Tables["Tinh"];
-            cbquequan.DisplayMember = dsSinhVien.Tables["Tinh"].Columns["Tentinh"].ToString();
+            cbquequan.DataSource = dsSinhVien.Tables["SinhVien"];
+            cbquequan.DisplayMember = dsSinhVien.Tables["SinhVien"].Columns["Quequan"].ToString();
         }
         DataTable dttk ;
         string tim;
