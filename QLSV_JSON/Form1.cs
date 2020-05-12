@@ -14,11 +14,12 @@ namespace QLSV_JSON
     public partial class Form1 : Form
     {
         DataSet dsSinhVien = new DataSet();
-        int vt, id = 0;
+        
         public Form1()
         {
             InitializeComponent();
         }
+        //ham tao bang sv
         public DataTable taobang1()
         {
             DataTable dt = new DataTable("SinhVien");
@@ -29,6 +30,7 @@ namespace QLSV_JSON
             dt.Columns.Add("Gioitinh");
             return dt;
         }
+        //hamtao bang diem
         public DataTable taobang2()
         {
             DataTable dt = new DataTable("Diem");
@@ -49,6 +51,7 @@ namespace QLSV_JSON
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            //doc file json neu co 
             if (System.IO.File.Exists("dulieu.json"))
             {
                 string jsonstr;
@@ -64,6 +67,7 @@ namespace QLSV_JSON
                 autoSize(datagv3);
                 
             }
+            //khong co file json thi tao 2 bang,them vao dataset
             else
             {
                 DataTable dtSV = taobang1();
@@ -83,6 +87,7 @@ namespace QLSV_JSON
             tbquequan.Clear();
         }
         //them Sv
+        int id = 0;
         private void btthem_Click(object sender, EventArgs e)
         {
             
@@ -95,8 +100,11 @@ namespace QLSV_JSON
                 id++;
                 string gt = "Nam";
                 if (rbnu.Checked) gt = "Nu";
+                //them vao sv vao bang sv
                 dsSinhVien.Tables["SinhVien"].Rows.Add(tbhoten.Text, tbmasv.Text, dtngaysinh.Value.ToShortDateString(), tbquequan.Text, gt);
+                //them vao bang diem
                 dsSinhVien.Tables["Diem"].Rows.Add(tbhoten.Text, 0, 0, 0, 0);
+                //dua len datagv
                 datagv1.DataSource = dsSinhVien.Tables["SinhVien"];               
                 datagv2.DataSource = dsSinhVien.Tables["SinhVien"];
                 datagv3.DataSource = dsSinhVien.Tables["Diem"];
@@ -125,6 +133,7 @@ namespace QLSV_JSON
             }
             else dsSinhVien.Tables["SinhVien"].Rows[rowIndex].SetField(4,rbnu.Text);
         }
+        //chon sv de sua
         private void datagv2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int rowIndex = datagv2.CurrentRow.Index;
@@ -139,7 +148,8 @@ namespace QLSV_JSON
             else rbnam.Checked = true;
         }
 
-        //Xoa SV
+        //Xoa SV o ca 2 bang
+        int vt;
         private void btxoa_Click(object sender, EventArgs e)
         {
             dsSinhVien.Tables["SinhVien"].Rows.RemoveAt(vt);
@@ -179,7 +189,7 @@ namespace QLSV_JSON
                 tbanh.Focus();
             }
             tb = (toan + van + anh) / 3;
-
+            //cap nhat diem tu cac textbox
             int rowIndex = datagv3.CurrentRow.Index;
             dsSinhVien.Tables["Diem"].Rows[rowIndex].SetField(0, datagv3.CurrentRow.Cells[0].Value.ToString());
             dsSinhVien.Tables["Diem"].Rows[rowIndex].SetField(1, toan);
@@ -187,7 +197,7 @@ namespace QLSV_JSON
             dsSinhVien.Tables["Diem"].Rows[rowIndex].SetField(3, anh);
             dsSinhVien.Tables["Diem"].Rows[rowIndex].SetField(4, tb);
         }
-
+        //lay thong tin tu datagv3
         private void datagv3_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             panel4.Enabled = true;
@@ -196,12 +206,7 @@ namespace QLSV_JSON
             tbvan.Text = datagv3.Rows[rowIndex].Cells[2].Value.ToString();
             tbanh.Text = datagv3.Rows[rowIndex].Cells[3].Value.ToString();
         }
-      
-        private void datagv3_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left) vt = e.RowIndex;
-        }
-
+        //luu sau khi cap nhat diem
         private void btluu2_Click(object sender, EventArgs e)
         {
             string jsonstr = JsonConvert.SerializeObject(dsSinhVien);
@@ -216,7 +221,7 @@ namespace QLSV_JSON
             dttk = taobang2();
             tim = "Diem";
         }
-
+        //click vao cac items thi hien len cbb tuong ung
         private void gioitinh_Click(object sender, EventArgs e)
         {
             cbxeploai.Visible = false;
@@ -236,6 +241,7 @@ namespace QLSV_JSON
             cbquequan.DataSource = dsSinhVien.Tables["SinhVien"];
             cbquequan.DisplayMember = dsSinhVien.Tables["SinhVien"].Columns["Quequan"].ToString();
         }
+        //tao bang tam de tk
         DataTable dttk ;
         string tim;
         private void bttim_Click(object sender, EventArgs e)

@@ -34,6 +34,7 @@ namespace PhongKham2
             dt.Columns.Add("Tongtien");
             return dt;
         }
+
         private int tinhTien()
         {
             int sum = 0;
@@ -121,6 +122,12 @@ namespace PhongKham2
             }
             datagv2.DataSource = dttk;
             autoSize(datagv2);
+        }
+
+        private void datagv1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = datagv1.CurrentRow.Index;
+            tbhoten.Text = datagv1.Rows[rowIndex].Cells[0].Value.ToString();
         }
     }
 }

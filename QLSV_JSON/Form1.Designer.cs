@@ -366,7 +366,6 @@
             this.datagv3.Size = new System.Drawing.Size(964, 296);
             this.datagv3.TabIndex = 6;
             this.datagv3.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagv3_CellClick);
-            this.datagv3.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.datagv3_CellMouseClick);
             // 
             // panel4
             // 
@@ -468,9 +467,9 @@
             // 
             this.panel7.Controls.Add(this.datagv4);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(3, 228);
+            this.panel7.Location = new System.Drawing.Point(3, 222);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(964, 280);
+            this.panel7.Size = new System.Drawing.Size(964, 286);
             this.panel7.TabIndex = 1;
             // 
             // datagv4
@@ -481,7 +480,7 @@
             this.datagv4.Name = "datagv4";
             this.datagv4.RowHeadersWidth = 62;
             this.datagv4.RowTemplate.Height = 28;
-            this.datagv4.Size = new System.Drawing.Size(964, 280);
+            this.datagv4.Size = new System.Drawing.Size(964, 286);
             this.datagv4.TabIndex = 0;
             // 
             // panel6
@@ -494,7 +493,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(3, 3);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(964, 225);
+            this.panel6.Size = new System.Drawing.Size(964, 219);
             this.panel6.TabIndex = 0;
             // 
             // toolStrip1

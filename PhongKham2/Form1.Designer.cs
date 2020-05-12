@@ -30,9 +30,16 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.datagv1 = new System.Windows.Forms.DataGridView();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btluu = new System.Windows.Forms.Button();
             this.cbhanrang = new System.Windows.Forms.CheckBox();
+            this.tbtong = new System.Windows.Forms.TextBox();
             this.cblaycao = new System.Windows.Forms.CheckBox();
+            this.bttong = new System.Windows.Forms.Button();
             this.cbchuphinh = new System.Windows.Forms.CheckBox();
             this.cbtaytrang = new System.Windows.Forms.CheckBox();
             this.cbcaovoi = new System.Windows.Forms.CheckBox();
@@ -53,40 +60,33 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btluu = new System.Windows.Forms.Button();
-            this.bttong = new System.Windows.Forms.Button();
-            this.tbtong = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.datagv2 = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tbtimsdt = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.bttim = new System.Windows.Forms.Button();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.datagv1 = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.tbtimsdt = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.datagv1)).BeginInit();
+            this.panel6.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagv2)).BeginInit();
+            this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datagv1)).BeginInit();
-            this.panel3.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.SuspendLayout();
@@ -114,6 +114,47 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "NhapTT";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.datagv1);
+            this.panel1.Controls.Add(this.panel6);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(964, 505);
+            this.panel1.TabIndex = 0;
+            // 
+            // datagv1
+            // 
+            this.datagv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagv1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.datagv1.Location = new System.Drawing.Point(0, 305);
+            this.datagv1.Name = "datagv1";
+            this.datagv1.RowHeadersWidth = 62;
+            this.datagv1.RowTemplate.Height = 28;
+            this.datagv1.Size = new System.Drawing.Size(964, 200);
+            this.datagv1.TabIndex = 5;
+            this.datagv1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagv1_CellClick);
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.panel3);
+            this.panel6.Controls.Add(this.groupBox1);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(964, 305);
+            this.panel6.TabIndex = 4;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.groupBox2);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(461, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(503, 305);
+            this.panel3.TabIndex = 3;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btluu);
@@ -138,6 +179,17 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dịch Vụ";
             // 
+            // btluu
+            // 
+            this.btluu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btluu.Location = new System.Drawing.Point(365, 248);
+            this.btluu.Name = "btluu";
+            this.btluu.Size = new System.Drawing.Size(75, 37);
+            this.btluu.TabIndex = 0;
+            this.btluu.Text = "Lưu";
+            this.btluu.UseVisualStyleBackColor = true;
+            this.btluu.Click += new System.EventHandler(this.btluu_Click);
+            // 
             // cbhanrang
             // 
             this.cbhanrang.AutoSize = true;
@@ -148,6 +200,18 @@
             this.cbhanrang.Text = "Hàn răng";
             this.cbhanrang.UseVisualStyleBackColor = true;
             // 
+            // tbtong
+            // 
+            this.tbtong.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbtong.Location = new System.Drawing.Point(112, 253);
+            this.tbtong.Name = "tbtong";
+            this.tbtong.ReadOnly = true;
+            this.tbtong.Size = new System.Drawing.Size(230, 26);
+            this.tbtong.TabIndex = 1;
+            this.tbtong.Text = "0";
+            this.tbtong.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // cblaycao
             // 
             this.cblaycao.AutoSize = true;
@@ -157,6 +221,16 @@
             this.cblaycao.TabIndex = 3;
             this.cblaycao.Text = "Lấy cao";
             this.cblaycao.UseVisualStyleBackColor = true;
+            // 
+            // bttong
+            // 
+            this.bttong.Location = new System.Drawing.Point(16, 248);
+            this.bttong.Name = "bttong";
+            this.bttong.Size = new System.Drawing.Size(75, 37);
+            this.bttong.TabIndex = 0;
+            this.bttong.Text = "Tổng";
+            this.bttong.UseVisualStyleBackColor = true;
+            this.bttong.Click += new System.EventHandler(this.bttong_Click);
             // 
             // cbchuphinh
             // 
@@ -359,39 +433,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Họ tên";
             // 
-            // btluu
-            // 
-            this.btluu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btluu.Location = new System.Drawing.Point(365, 248);
-            this.btluu.Name = "btluu";
-            this.btluu.Size = new System.Drawing.Size(75, 37);
-            this.btluu.TabIndex = 0;
-            this.btluu.Text = "Lưu";
-            this.btluu.UseVisualStyleBackColor = true;
-            this.btluu.Click += new System.EventHandler(this.btluu_Click);
-            // 
-            // bttong
-            // 
-            this.bttong.Location = new System.Drawing.Point(16, 248);
-            this.bttong.Name = "bttong";
-            this.bttong.Size = new System.Drawing.Size(75, 37);
-            this.bttong.TabIndex = 0;
-            this.bttong.Text = "Tổng";
-            this.bttong.UseVisualStyleBackColor = true;
-            this.bttong.Click += new System.EventHandler(this.bttong_Click);
-            // 
-            // tbtong
-            // 
-            this.tbtong.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbtong.Location = new System.Drawing.Point(112, 253);
-            this.tbtong.Name = "tbtong";
-            this.tbtong.ReadOnly = true;
-            this.tbtong.Size = new System.Drawing.Size(230, 26);
-            this.tbtong.TabIndex = 1;
-            this.tbtong.Text = "0";
-            this.tbtong.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
@@ -403,27 +444,6 @@
             this.tabPage3.Size = new System.Drawing.Size(970, 511);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "TimKH";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.datagv1);
-            this.panel1.Controls.Add(this.panel6);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(964, 505);
-            this.panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.panel5);
-            this.panel2.Controls.Add(this.tbtimsdt);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(964, 148);
-            this.panel2.TabIndex = 0;
             // 
             // panel4
             // 
@@ -445,23 +465,16 @@
             this.datagv2.Size = new System.Drawing.Size(964, 357);
             this.datagv2.TabIndex = 0;
             // 
-            // label6
+            // panel2
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(98, 54);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 20);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "SDT";
-            // 
-            // tbtimsdt
-            // 
-            this.tbtimsdt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbtimsdt.Location = new System.Drawing.Point(193, 51);
-            this.tbtimsdt.Name = "tbtimsdt";
-            this.tbtimsdt.Size = new System.Drawing.Size(319, 26);
-            this.tbtimsdt.TabIndex = 1;
+            this.panel2.Controls.Add(this.panel5);
+            this.panel2.Controls.Add(this.tbtimsdt);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(964, 148);
+            this.panel2.TabIndex = 0;
             // 
             // panel5
             // 
@@ -482,35 +495,23 @@
             this.bttim.UseVisualStyleBackColor = true;
             this.bttim.Click += new System.EventHandler(this.bttim_Click);
             // 
-            // panel6
+            // tbtimsdt
             // 
-            this.panel6.Controls.Add(this.panel3);
-            this.panel6.Controls.Add(this.groupBox1);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(964, 305);
-            this.panel6.TabIndex = 4;
+            this.tbtimsdt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbtimsdt.Location = new System.Drawing.Point(193, 51);
+            this.tbtimsdt.Name = "tbtimsdt";
+            this.tbtimsdt.Size = new System.Drawing.Size(319, 26);
+            this.tbtimsdt.TabIndex = 1;
             // 
-            // datagv1
+            // label6
             // 
-            this.datagv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datagv1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.datagv1.Location = new System.Drawing.Point(0, 305);
-            this.datagv1.Name = "datagv1";
-            this.datagv1.RowHeadersWidth = 62;
-            this.datagv1.RowTemplate.Height = 28;
-            this.datagv1.Size = new System.Drawing.Size(964, 200);
-            this.datagv1.TabIndex = 5;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.groupBox2);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(461, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(503, 305);
-            this.panel3.TabIndex = 3;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(98, 54);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(41, 20);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "SDT";
             // 
             // tabPage1
             // 
@@ -524,6 +525,14 @@
             this.tabPage1.TabIndex = 3;
             this.tabPage1.Text = "ThongKe";
             // 
+            // panel8
+            // 
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.Location = new System.Drawing.Point(3, 232);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(964, 276);
+            this.panel8.TabIndex = 0;
+            // 
             // panel7
             // 
             this.panel7.Controls.Add(this.panel10);
@@ -534,13 +543,13 @@
             this.panel7.Size = new System.Drawing.Size(964, 229);
             this.panel7.TabIndex = 0;
             // 
-            // panel8
+            // panel10
             // 
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(3, 232);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(964, 276);
-            this.panel8.TabIndex = 0;
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel10.Location = new System.Drawing.Point(298, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(352, 229);
+            this.panel10.TabIndex = 0;
             // 
             // panel9
             // 
@@ -549,14 +558,6 @@
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(314, 229);
             this.panel9.TabIndex = 0;
-            // 
-            // panel10
-            // 
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel10.Location = new System.Drawing.Point(298, 0);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(352, 229);
-            this.panel10.TabIndex = 0;
             // 
             // Form1
             // 
@@ -570,21 +571,21 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.datagv1)).EndInit();
+            this.panel6.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage3.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.datagv2)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel5.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.datagv1)).EndInit();
-            this.panel3.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.ResumeLayout(false);
